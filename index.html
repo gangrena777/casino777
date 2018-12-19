@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>casino
+	</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+     <div id="main_view">
+	      
+	      	<div class="but_cont"><input type="button" class="button" onclick="play()"  value="START"/></div>
+	      
+      <div class="slot">
+      
+
+              <div class="num  item first">
+		                 <div class="in">
+			                    <div><img src="images/coin.png" ></div>
+			                     <div><img src="images/flower.png" ></div>
+			                      
+			                       
+			                       
+			                        <div><img src="images/star.png" ></div>
+			                        <div><img src="images/random.png" ></div>
+			                         <div><img src="images/mshroom.png" ></div>
+			            </div>
+			  </div>                      
+		                 
+	        <div class="num  item second">
+		                   <div class="in">
+			                       <div><img src="images/flower.png" ></div>
+			                     <div><img src="images/star.png" ></div>
+			                    
+			                      
+			                      
+			                        <div><img src="images/coin.png" ></div>
+			                        <div><img src="images/random.png" ></div>
+			                         <div><img src="images/mshroom.png" ></div>
+		                    </div>
+		    </div>                
+	       <div class="num  item third">
+		                   <div class="in">
+			                        <div><img src="images/random.png" ></div>
+			                     <div><img src="images/flower.png" ></div>
+			                    
+			                      <div><img src="images/star.png" ></div>
+			                       <div><img src="images/coin.png" ></div>
+			                        <div><img src="images/mshroom.png"></div>
+			                        
+			                       
+		                   </div>
+          </div>
+
+           <div id="ruchka" ><img src="images/ball.png" id ="ball" class="ball"><img src="images/stick.png"  id ="stick" class="stick"></div>
+                                                               
+      </div>
+     
+  </div>
+ <div id="message_win" class="none">
+       <div class="mess_container">
+       	   <h1>ПОЗДРАВЛЯЕМ!</h1>
+       	   <div class="mess_imgs">
+       	 
+       	   </div>
+       	   <div class="mess_mess"><b>Вы выграли бесплатную доставку на заказы в декабре и январе</b> от нашей компании. Для того, чтобы узнать, как вы можете воспользоваться данным призом, свяжитесь с вашим персональным менеджером.</div>
+       </div>	
+
+      
+ </div>
+<script>
+	
+function play(){
+
+	var slots_image = {'1':'coin', '2':'flower', '3':'star', '4':'random','5':'mshroom'};
+
+    var one = Math.floor((Math.random()*5)+1);
+    var two = Math.floor((Math.random()*5)+1);
+    var three = Math.floor((Math.random()*5)+1);
+    /*  чтоб увидеть победу - присвоет значения принудительно
+    var one = 4;
+    var two = 4;
+    var three = 4;
+
+    */
+ 
+
+
+
+   var element = document.getElementById("stick");
+   var element2 = document.getElementById("ball");
+            element.classList.add("play_stick");
+            element2.classList.add("play_ball");
+      setTimeout(function()
+          {   
+            element.classList.remove("play_stick");
+            element2.classList.remove("play_ball"); 
+          },1000);
+    var x = document.getElementsByClassName("in");
+                                   ////
+                                           var div_one = document.createElement('div');
+                                         
+                                        div_one.innerHTML = "<img src='images/"+ slots_image[one]+".png'>";
+
+                                        x[0].appendChild(div_one);
+                                        x[0].children[0].remove();
+                                        ////
+                                         var div_two = document.createElement('div');
+                                         
+                                        div_two.innerHTML = "<img src='images/"+ slots_image[two]+".png'>";
+
+                                        x[1].appendChild(div_two);
+                                          x[1].children[0].remove();
+                                        ////
+                                          var div_three = document.createElement('div');
+                                         
+                                        div_three.innerHTML = "<img src='images/"+ slots_image[three]+".png'>";
+
+                                        x[2].appendChild(div_three);
+                                          x[2].children[0].remove();
+                                   ////
+         x[0].classList.add("play_play");
+     x[1].classList.add("play_play");
+      x[2].classList.add("play_play");  
+
+
+       setTimeout(function()
+          {   
+          	 x[0].insertBefore(x[0].children[4], x[0].children[0]);
+          	 x[1].insertBefore(x[1].children[4], x[1].children[0]);
+          	 x[2].insertBefore(x[2].children[4], x[2].children[0]);
+              x[0].classList.remove("play_play");
+            x[1].classList.remove("play_play");
+             x[2].classList.remove("play_play"); 
+          },1600); 
+   
+ 
+
+if( one == two && one ==three){
+	x[0].children[4].classList.add("win_play");
+      x[1].children[4].classList.add("win_play");
+       x[2].children[4].classList.add("win_play");
+
+  var element3 = document.getElementById("main_view");
+  var element4 = document.getElementById("message_win");
+   element3.classList.add('fadeOut');
+ 
+     
+     element4.classList.add('fadeIn');
+}
+    var y = document.getElementsByClassName("mess_imgs");
+      y[0].innerHTML = "<img src='images/"+ slots_image[one]+".png'><img src='images/"+ slots_image[two]+".png'><img src='images/"+ slots_image[three]+".png'>"     
+}
+
+</script>
+</body>
+</html>
